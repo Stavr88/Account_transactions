@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 
+from utilit.clases import Operation
 from utilit.settings import OPERATION_PATH
 
 
@@ -22,33 +23,27 @@ def get_executed_operations(operations: list[dict]) -> list[dict]:
     """
     executed_operations = []
     for operait in operations:
-        if operait["state"] == "EXECUTED":
+        if operait.get('state') == 'EXECUTED':
             executed_operations.append(operait)
     return executed_operations
 
 
-
-def loads_last_operations(operations: list[dict]):
+def ret_list_class_is_operations(operations: list[dict]) -> list[Operation]:
     """
-    возвращает список дат с операциями
+
     :param operations:
     :return:
     """
-    date_operations = []
-    for date_ in operations:
-        date_operations.append(date_["date"])
-    return date_operations
+    operations_classes = []
+    for oper in operations:
+        oper_operationAmount = oper['operationAmount']
+        oper_exemp = Operation(
+            date=operations['date'],
+            pk=operations['id'],
+            state=operations['id'],
+        )
+    pass
 
 
-    # return [list_opera for i  in operations]
-
-
-# print(loads_json(OPERATION_PATH))
 a = loads_json(OPERATION_PATH)
-print(loads_last_operations(a))
-
-
-
-
-
-
+print(get_executed_operations(a))
