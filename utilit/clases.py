@@ -12,5 +12,5 @@ class Operation:
 
     def __str__(self):
         return f'{__dict__}'
-    pass
+
 
