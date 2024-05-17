@@ -38,12 +38,12 @@ class Operation:
             return f'Счет ** {description_[-4:]}'
         else:
             str_desc = ''
-            for i in description_[-12:-5]:
+            for i in description_[-10:-4]:
                 if i != ' ':
                     str_desc += "*"
                 else:
                     str_desc += i
-            return f"{description_[0:-12]}{str_desc}{description_[-5:]}"
+            return f"{description_[0:-10]}{str_desc}{description_[-4:]}"
 
     # def __lt__(self, other):
         return self.date < other.date
