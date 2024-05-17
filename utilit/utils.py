@@ -30,20 +30,27 @@ def get_executed_operations(operations: list[dict]) -> list[dict]:
 
 def ret_list_class_is_operations(operations: list[dict]) -> list[Operation]:
     """
-
-    :param operations:
-    :return:
+Создает список экземпляров и возращает их
+    :param operations: list[dict]
+    :return: list[Operation]
     """
     operations_classes = []
-    for oper in operations:
-        oper_operationAmount = oper['operationAmount']
+    for oper_ns in operations:
+        oper_operationAmount = oper_ns["operationAmount"]
         oper_exemp = Operation(
-            date=operations['date'],
-            pk=operations['id'],
-            state=operations['id'],
+            pk=oper_ns["id"],
+            date=oper_ns["date"],
+            amount=oper_operationAmount["amount"],
+            state=oper_ns["state"],
+            currency_name=oper_operationAmount["currency"]["name"],
+            description=oper_ns["description"],
+            from_=oper_ns.get("from"),
+            to=oper_ns["to"],
         )
-    pass
+        operations_classes.append(oper_exemp)
+    return operations_classes
 
 
-a = loads_json(OPERATION_PATH)
-print(get_executed_operations(a))
+def sort_operation_exec(operation: list[Operation]) -> list[Operation]:
+    return sorted(operation)
+
