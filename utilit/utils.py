@@ -59,3 +59,4 @@ def sort_operation_exec(operation: list[Operation]) -> list[Operation]:
     """
     return sorted(operation, reverse=True)
 
+

@@ -3,6 +3,9 @@ import datetime
 
 
 class Operation:
+    """
+    Создает класс с атрибутами из файла .json
+    """
     def __init__(self, pk: str,
                  date: str,
                  state: str,
@@ -45,10 +48,20 @@ class Operation:
                     str_desc += i
             return f"{description_[0:-10]}{str_desc}{description_[-4:]}"
 
-    # def __lt__(self, other):
+    def __lt__(self, other):
+        """
+        Сравнивает два экземпляра по дате, определяет наименьший из них и возращает bool значения
+        :param other:
+        :return: True or False
+        """
         return self.date < other.date
 
     def __gt__(self, other):
+        """
+        Сравнивает два экземпляра по дате, определяет наибольшее из них и возращает bool значения
+        :param other:
+        :return: True or False
+        """
         return self.date > other.date
 
     def __str__(self):
