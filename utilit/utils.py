@@ -52,5 +52,10 @@ def ret_list_class_is_operations(operations: list[dict]) -> list[Operation]:
 
 
 def sort_operation_exec(operation: list[Operation]) -> list[Operation]:
-    return sorted(operation)
+    """
+    Сортирует список экземпляров по дате
+    :param operation:
+    :return:
+    """
+    return sorted(operation, reverse=True)
 
