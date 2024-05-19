@@ -2,7 +2,6 @@ import json
 from pathlib import Path
 
 from Account_transactions.utilit.clases import Operation
-from Account_transactions.utilit.settings import OPERATION_PATH
 
 
 def loads_json(path: Path) -> list[dict]:

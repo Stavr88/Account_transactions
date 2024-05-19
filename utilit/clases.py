@@ -6,7 +6,7 @@ class Operation:
     """
     Создает класс с атрибутами из файла .json
     """
-    def __init__(self, pk: str,
+    def __init__(self, pk: int,
                  date: str,
                  state: str,
                  amount: str,
@@ -38,16 +38,21 @@ class Operation:
         :return: str
         """
         if description_.startswith("Счет"):
-            return f'Счет ** {description_[-4:]}'
+            return f'Счет **{description_[-4:]}'
         else:
             str_desc = ''
-            for i in description_[-10:-4]:
-                if i != ' ':
-                    str_desc += "*"
-                else:
-                    str_desc += i
-            return f"{description_[0:-10]}{str_desc}{description_[-4:]}"
+            str_desc1 = ''
+            for i in description_[-10:-8]:
+                str_desc += "*"
+            for i in description_[-8:-4]:
+                str_desc1 += "*"
+            return (f"{description_[0:-16]}{description_[-16:-12]} "
+                    f"{description_[-12:-10]}"
+                    f"{str_desc} "
+                    f"{str_desc1} "
+                    f"{description_[-4:]}")
 
+    # return f"{description_[0:-10]}{str_desc}{description_[-4:]}"
     def __lt__(self, other):
         """
         Сравнивает два экземпляра по дате, определяет наименьший из них и возращает bool значения

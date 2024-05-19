@@ -1,6 +1,6 @@
-from Account_transactions.utilit.settings import OPERATION_PATH, POINT_COUNT
-from Account_transactions.utilit.utils import loads_json, get_executed_operations, sort_operation_exec, \
-    ret_list_class_is_operations
+from utilit.settings import OPERATION_PATH, POINT_COUNT
+from utilit.utils import loads_json, get_executed_operations, ret_list_class_is_operations, \
+    sort_operation_exec
 
 operations = loads_json(OPERATION_PATH)
 operations_executed = get_executed_operations(operations)
